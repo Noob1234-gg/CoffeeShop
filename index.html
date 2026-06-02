@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кофейня Уютное Место</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Кофейня "Уютное Место"</h1>
+<nav>
+    <a href="#home">Главная</a>
+    <a href="#about">О нас</a>
+    <a href="#menu">Меню</a>
+    <a href="#contacts">Контакты</a>
+    <a href="#" id="profile-link" onclick="showProfile(); return false;">👤 Профиль</a>
+    <a href="#" onclick="showCart(); return false;">🛒 Корзина (<span id="cart-count">0</span>)</a>
+</nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h2>Добро пожаловать!</h2>
+        <p>Уютная атмосфера, вкусный кофе и свежая выпечка ждут вас каждый день.</p>
+    </section>
+
+    <section id="about">
+        <h2>О нас</h2>
+        <p>
+            "Уютное Место" — это не просто кофейня, а пространство для отдыха, встреч и вдохновения. 
+            Мы готовим кофе из отборных зерен и предлагаем свежую выпечку собственного приготовления.
+        </p>
+    </section>
+<section id="menu">
+    <h2>Меню</h2>
+    
+    <!-- Кнопки фильтрации -->
+    <div class="menu-filters">
+        <button class="filter-btn active" onclick="filterMenu('all')">Все</button>
+        <button class="filter-btn" onclick="filterMenu('favorites')">❤️ Избранное</button>
+        <button class="filter-btn" onclick="filterMenu('coffee')">☕ Кофе</button>
+        <button class="filter-btn" onclick="filterMenu('bakery')">🥐 Выпечка</button>
+        <button class="filter-btn" onclick="filterMenu('desserts')">🍰 Десерты</button>
+    </div>
+    
+    <!-- Остальное меню без изменений -->
+    <h3>☕ Кофе и напитки</h3>
+    <ul class="menu-list" data-category="coffee">
+        <!-- ... существующие элементы кофе ... -->
+<li>
+        <span>Эспрессо</span>
+        <div>
+            <span>119₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Эспрессо', 119)">+ В корзину</button>
+        <button class="add-to-favorite-btn" data-item-name="Эспрессо" onclick="toggleFavorite('Эспрессо', 119)">🤍</button>
+        </div>
+    </li>
+    <li>
+        <span>Американо</span>
+        <div>
+            <span>129₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Американо', 129)">+ В корзину</button>
+        <button class="add-to-favorite-btn" data-item-name="Американо" onclick="toggleFavorite('Американо', 119)">🤍</button>
+        </div>
+    </li>
+    <li>
+        <span>Капучино</span>
+        <div>
+            <span>169₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Капучино', 169)">+ В корзину</button>
+        <button class="add-to-favorite-btn" data-item-name="Капучино" onclick="toggleFavorite('Капучино', 119)">🤍</button>
+        </div>
+    </li>
+    <li>
+        <span>Латте</span>
+        <div>
+            <span>179₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Латте', 179)">+ В корзину</button>
+        <button class="add-to-favorite-btn" data-item-name="Латте" onclick="toggleFavorite('Латте', 119)">🤍</button>
+        </div>
+    </li>
+    <li>
+        <span>Флет уайт</span>
+        <div>
+            <span>189₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Флет уайт', 189)">+ В корзину</button>
+        <button class="add-to-favorite-btn" data-item-name="Флет уайт" onclick="toggleFavorite('Флет уайт', 119)">🤍</button>
+        </div>
+    </li>
+    <li>
+        <span>Мокка</span>
+        <div>
+            <span>189₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Мокка', 189)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Айс-латте</span>
+        <div>
+            <span>209₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Айс-латте', 209)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Чай (зелёный, чёрный, мятный)</span>
+        <div>
+            <span>119₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Чай', 119)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Бабл-ти (манго, клубника, виноград)</span>
+        <div>
+            <span>239₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Бабл-ти', 239)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Пепси / Кола / Миринда</span>
+        <div>
+            <span>79₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Напиток Пепси/Кола/Миринда', 79)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Асу (бутылка)</span>
+        <div>
+            <span>49₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Вода Асу', 49)">+ В корзину</button>
+        </div>
+    </li>
+    </ul>
+    
+    <h3>🥐 Выпечка</h3>
+    <ul class="menu-list" data-category="bakery">
+        <!-- ... существующие элементы выпечки ... -->
+<li>
+        <span>Круассан классический</span>
+        <div>
+            <span>149₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Круассан классический', 149)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Круассан с шоколадом</span>
+        <div>
+            <span>179₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Круассан с шоколадом', 179)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Булочка с корицей</span>
+        <div>
+            <span>149₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Булочка с корицей', 149)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Бейгл с сыром и зеленью</span>
+        <div>
+            <span>189₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Бейгл с сыром и зеленью', 189)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Песочное печенье</span>
+        <div>
+            <span>89₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Песочное печенье', 89)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Панкейки с мёдом / шоколадом / ягодами</span>
+        <div>
+            <span>209₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Панкейки', 209)">+ В корзину</button>
+        </div>
+    </li>
+    </ul>
+    
+    <h3>🍰 Десерты и торты</h3>
+    <ul class="menu-list" data-category="desserts">
+        <!-- ... существующие элементы десертов ... -->
+    <li>
+        <span>Чизкейк Нью-Йорк</span>
+        <div>
+            <span>229₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Чизкейк Нью-Йорк', 229)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Медовик</span>
+        <div>
+            <span>199₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Медовик', 199)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Тирамису</span>
+        <div>
+            <span>249₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Тирамису', 249)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Макаруны (1 шт.)</span>
+        <div>
+            <span>79₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Макаруны', 79)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Пирожное картошка</span>
+        <div>
+            <span>139₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Пирожное картошка', 139)">+ В корзину</button>
+        </div>
+    </li>
+    </ul>
+    
+    <h3>🍦 Мороженое</h3>
+    <ul class="menu-list" data-category="desserts">
+        <!-- ... существующие элементы мороженого ... -->
+<li>
+        <span>Ванильное / шоколадное (шарик)</span>
+        <div>
+            <span>119₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Мороженое ванильное/шоколадное', 119)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Стаканчик с топпингом</span>
+        <div>
+            <span>179₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Стаканчик с топпингом', 179)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Авторское мороженое Классика</span>
+        <div>
+            <span>229₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Авторское мороженое Классика', 229)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Голландское мороженое (в стаканчике или рожке)</span>
+        <div>
+            <span>259₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Голландское мороженое', 259)">+ В корзину</button>
+        </div>
+    </li>
+    </ul>
+    
+    <h3>🍫 Фирменные десерты Уютного Место</h3>
+    <ul class="menu-list" data-category="desserts">
+        <!-- ... существующие элементы фирменных десертов ... -->
+    <li>
+        <span>Медовый тост с мороженым</span>
+        <div>
+            <span>299₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Медовый тост с мороженым', 299)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Панкейки с шоколадным фонтаном</span>
+        <div>
+            <span>289₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Панкейки с шоколадным фонтаном', 289)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Вулкан-шоколад (Шоколадный лава-кейк)</span>
+        <div>
+            <span>329₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Вулкан-шоколад', 329)">+ В корзину</button>
+        </div>
+    </li>
+    <li>
+        <span>Японские моти с кремом и чаем матча</span>
+        <div>
+            <span>259₽</span>
+            <button class="add-to-cart-btn" onclick="addToCart('Японские моти', 259)">+ В корзину</button>
+        </div>
+    </li>
+    </ul>
+</section>
+        <!-- Остальные разделы меню -->
+    </section>
+
+    <div class="footer-section">
+        <section id="contacts">
+            <h2>Контакты</h2>
+            <p>Адрес: г. Москва, ул. Примерная, 5</p>
+            <p>Телефон: +7 (999) 123-45-67</p>
+            <p>Email: cozyplace@coffee.ru</p>
+            <p>
+                <a href="https://vk.com/ytk_yurga" target="_blank">Vkontakte</a> 
+            </p>
+        </section>
+        
+        <footer>
+            <div style="height: 40px;"></div>
+            2025 Кофейня "Уютное Место"
+        </footer>
+    </div>
+
+    <!-- AI Помощник -->
+    <div class="ai-assistant">
+        <button class="ai-button" onclick="toggleAIChat()">
+            <span class="ai-icon">🤖</span>
+            AI Помощник
+        </button>
+        
+        <div id="ai-chat-modal" class="ai-modal">
+            <div class="ai-modal-content">
+                <div class="ai-header">
+                    <h3>🎯 AI-консультант кофейни</h3>
+                    <span class="ai-close" onclick="toggleAIChat()">&times;</span>
+                </div>
+                
+                <div class="ai-chat-container">
+                    <div class="ai-message">
+                        <div class="ai-avatar">🤖</div>
+                        <div class="ai-text">
+                            <strong>Привет! Я AI-помощник</strong>
+                            <p>Я могу помочь:</p>
+                            <ul>
+                                <li>🎯 Подобрать идеальный кофе</li>
+                                <li>📋 Рассказать о меню</li>
+                                <li>📍 Найти ближайшую кофейню</li>
+                                <li>💡 Дать рекомендации</li>
+                            </ul>
+                            <p>Что вас интересует?</p>
+                        </div>
+                    </div>
+                    
+                    <div id="ai-chat-messages"></div>
+                </div>
+                
+                <div class="ai-quick-actions">
+                    <button onclick="askAI('подобрать кофе')">☕ Подобрать кофе</button>
+                    <button onclick="askAI('специальные предложения')">🎁 Акции</button>
+                </div>
+                
+                <div class="ai-input-container">
+                    <input type="text" id="ai-user-input" placeholder="Задайте вопрос AI-помощнику...">
+                    <button onclick="sendUserMessage()">📤</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно корзины -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-modal-content">
+            <div class="cart-header">
+                <h2>🛒 Ваш заказ</h2>
+                <span class="cart-close" onclick="hideCart()">&times;</span>
+            </div>
+            <div class="cart-items" id="cart-items">
+                <!-- Товары будут здесь -->
+            </div>
+            <div class="cart-total">
+                <strong>Итого: <span id="cart-total-price">0</span> ₽</strong>
+            </div>
+            <div class="cart-actions">
+                <button onclick="clearCart()">🗑️ Очистить</button>
+                <button onclick="checkout()" class="checkout-btn">💳 Оформить заказ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Кнопка "Наверх" -->
+    <button id="scrollToTopBtn" class="scroll-to-top" onclick="scrollToTop()">
+        ↑
+    </button>
+
+    <!-- Контейнер для мини-игры -->
+    <div id="coffee-game" class="coffee-game-container">
+        <div class="game-header">
+            <h3>☕ Кофейный сбор!</h3>
+            <button class="exit-game-btn" onclick="exitCoffeeGame()">🚪 Выйти</button>
+        </div>
+        <div class="game-stats">
+            <div class="timer">Время: <span id="game-timer">30</span>с</div>
+            <div class="score">Собрано: <span id="game-score">0</span>/10</div>
+        </div>
+        <div class="game-area" id="game-area">
+            <!-- Кофейные зёрна будут здесь -->
+        </div>
+        <div class="game-message" id="game-message"></div>
+    </div>
+
+    <!-- Контейнер для дождя из зёрен -->
+    <div id="coffee-rain" class="coffee-rain-container"></div>
+
+    <!-- Модальное окно профиля -->
+    <div id="profile-modal" class="profile-modal">
+        <div class="profile-modal-content">
+            <div class="profile-header">
+                <h2>👤 Мой профиль</h2>
+                <span class="profile-close" onclick="hideProfile()">&times;</span>
+            </div>
+            
+            <div class="profile-content">
+                <div class="profile-avatar-section">
+                    <div class="avatar-container">
+                        <img id="profile-avatar" src="" alt="Аватар" class="profile-avatar">
+                        <button onclick="openAvatarSelector()" class="change-avatar-btn">📷 Сменить аватар</button>
+                    </div>
+                    
+                    <div class="profile-info">
+                        <div class="profile-field">
+                            <label>Имя пользователя:</label>
+                            <input type="text" id="profile-username" placeholder="Введите ваше имя" maxlength="20">
+                        </div>
+                        <div class="profile-field">
+                            <label>Email:</label>
+                            <input type="email" id="profile-email" placeholder="email@example.com">
+                        </div>
+                        <div class="profile-field">
+                            <label>Телефон:</label>
+                            <input type="tel" id="profile-phone" placeholder="+7 (999) 123-45-67">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-sections">
+                    <div class="profile-section">
+                        <h3>❤️ Любимые позиции</h3>
+                        <div id="favorite-items" class="favorite-items">
+                            <!-- Любимые товары будут здесь -->
+                        </div>
+                    </div>
+                    
+                    <div class="profile-section">
+                        <h3>📦 Последние заказы</h3>
+                        <div id="order-history" class="order-history">
+                            <!-- История заказов будет здесь -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-actions">
+                    <button onclick="saveProfile()" class="save-profile-btn">💾 Сохранить профиль</button>
+                    <button onclick="resetProfile()" class="reset-profile-btn">🔄 Сбросить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Селектор аватарок -->
+    <div id="avatar-selector" class="avatar-selector">
+        <div class="avatar-selector-content">
+            <div class="avatar-selector-header">
+                <h3>Выберите аватарку</h3>
+                <span class="avatar-selector-close" onclick="closeAvatarSelector()">&times;</span>
+            </div>
+            <div class="avatar-grid" id="avatar-grid">
+                <!-- Аватарки будут загружены здесь через JS -->
+            </div>
+            <div class="avatar-upload">
+                <label>Или загрузите свою:</label>
+                <input type="file" id="avatar-upload" accept="image/*" onchange="handleAvatarUpload(event)">
+            </div>
+        </div>
+    </div>
+
+    <!-- Подключение JavaScript -->
+    <script src="ai-assistant.js"></script>
+    <script>
+    // Инициализация при загрузке страницы
+    document.addEventListener('DOMContentLoaded', function() {
+        initializeFavoriteButtons();
+        updateCartCount();
+        
+        // Инициализация AI помощника
+        const aiInput = document.getElementById('ai-user-input');
+        if (aiInput) {
+            aiInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendUserMessage();
+                }
+            });
+        }
+    });
+    </script>
+<!-- В head или перед закрывающим тегом body -->
+<script src="ai-assistant.js"></script>
+</body>
+</html>
